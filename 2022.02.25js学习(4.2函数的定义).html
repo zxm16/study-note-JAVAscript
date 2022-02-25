@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的定义</title>
+    <script>
+        /// 一，初识函数
+
+        //1.1没有返回值函数
+        function addSum(a, b){
+            // 其中（a，b）和python中的类里一样是形参
+            let sum = a + b;
+            document.write(sum);
+            document.write('<br/>');
+        }
+        addSum(2,5);
+        /*
+        这里调用函数（2， 5）和python中的类一样是实参
+        通过赋值实参来传递给形参在通过形参来转到函数体的变量中
+         */
+        addSum(4,3);
+        addSum(4,9);
+        addSum(7,9);
+        document.write('<br/>');
+
+        //1.2有返回值函数
+        // 有返回值得函数其本质就是有返回值就是有了返回值后
+        // 就算在函数外部也能用这个函数
+        function addSum01(a, b){
+            let sum01 = a + b;
+            return sum01;
+        }
+        let n = addSum01(1, 2) + 100;
+        document.write(n);
+        document.write('<br/>')
+
+
+        ///二.全局变量和局部变量
+
+        // 2.1全局变量
+        let a = '张吃饭的小被窝';
+        function getMes(){
+            let  b = a + 'JavaScript';
+            document.write(b);
+        }
+        getMes();
+        document.write('<br/>');
+
+        // 2.2局部变量
+
+        /*
+        var a2 = '张吃饭的专属demo';
+        function getMes02(){
+            let b = 'JavaScript';
+        }
+        getMes02()
+        let  sum02 = a2 + b;
+        document.write(sum02);
+        document.write('<br/>');
+         */
+
+        /*
+        我们可以看到函数体中的变量b和外部的b是没有关联的
+        函数外的b应该会显示该函数没有定义所以在函数体内定义的是局部量
+        而在函数体外定义的a2还可以调用所以a2是函数的全局变量
+         */
+
+        // 2.3解决函数体内的局部变量无法在函数体外部用的方法
+        // 就是加上返回值即return,即调用的函数返回值是b1
+        let a3 = '张吃饭的专属demo:';
+        function getMes03(){
+            let b1 = 'JavaScript';
+            return b1 ;
+        }
+        let  sum03 = a3 + getMes03();
+        document.write(sum03);
+        document.write('<br/>');
+
+
+        ///三.函数的调用
+
+        //3.1直接调用
+        /*
+        从上面例子可以基本知道怎么直接调用
+         */
+
+        // 3.2表达式调用
+        /*
+        从上面的例子也可以看出
+         */
+
+        // 3.3超链接调用
+        // 在html中的body中调用
+        function expressMes(){
+            alert('她：我爱helicopter。\n我：oh my fucking god ，= =？！');
+        }
+
+        // 3.4在事件中调用
+        function  alertMes(){
+            alert('张吃饭的小窝不欢迎你');
+        }
+
+
+        /// 四.嵌套函数
+        // 例
+        function func(a){
+
+            function multi(x) {
+                return x*x;
+            }
+            let m = 1;
+            for (let i = 1; i <= multi(a); i++)
+            {
+                m = m*i;
+            }
+            return m;
+        }
+        let sum = func(2) +func(3);
+        document.write(sum);
+        document.write('<br/>')
+        /*
+        这个嵌套函数的操作流程是：先执行let sum=....
+        func(2)中2赋给a在最里层中又调用了multi（a）
+        所以函数multi的返回值是2*2=4即返回值是4
+        再将multi（a）= 4赋值到循环中就会的的得出m的值为14
+        所以func（2）的返回值是14同理可以计算func（3）的返回值
+         */
+
+
+        /// 五.内置函数
+        /*
+        ParseInt():提取字符串的数字，只限提取整数
+        ParseFloat():提取字符串中的数字，可以提取小数
+        isFinite():判断一个数是否是一个有限数值
+        isNaN():判断一个数是否是NaN
+        escape():对字符串进行编码（在新规定中已经被淘汰）
+        unescape():对字符串进行解码（同样在新的规定中已经淘汰）
+        eval():把一个字符串当做一个表达式进行执行
+         */
+    </script>
+</head>
+<body>
+<a href="javascript:expressMes()">表白对话</a>
+<!--通过超链接来调用js函数-->
+<input type="button" onclick="alertMes()" value="你敢点吗"/>
+<!--通过事件来调用js函数-->
+</body>
+</html>
