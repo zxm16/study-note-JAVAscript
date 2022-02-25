@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第四章训练题</title>
+    <script>
+        /*
+        题目：判断某一年是否是润年
+        判断条件：对于普通年，如果能被整数4整除且不能被100整除
+                对于世纪年，能被400整除的是闰年
+         */
+        function yearNum(m){
+            if (m % 4 === 0 && m % 100 !== 0){
+                document.write('今年就是一个普通年');
+                document.write('<br/>');
+            } else if (m % 400 === 0){
+                document.write('今年是润年你可以少上几天班了');
+                document.write('<br/>');
+            }else{
+                document.write('这提示是假的把怎么就除以4没有余数就是普通年我才是普通年');
+                document.write('<br/>');
+            }
+        }
+        yearNum(2022);
+        yearNum(2000);
+        yearNum(2020);
+        yearNum(2444);
+        /*
+        题目：求出任意5个数最大值
+         */
+        function maxNum(a, b, c, d, e){
+            let sum;
+            sum = (a > b) ? a : b;
+            sum = (sum > c)? sum : c;
+            sum = (sum > d)? sum : d;
+            sum = (sum > e)? sum : e;
+            return sum;
+        }
+        let maxnum = '最大的值为：' + maxNum(2, 4, 1, 4, 5) ;
+        document.write(maxnum);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
