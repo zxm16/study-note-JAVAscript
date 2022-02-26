@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三章控制流程</title>
+    <script>
+        /// 3.1.1顺序结构
+        let str1 = '张吃饭的小窝';
+        let str2 = 'javascript';
+        let str3 = str1 + str2;
+        document.write(str3);
+        document.write('<br/>');
+
+
+        /// 3.1.2选择结构
+        // if语句
+        let score = 100;
+        if (score > 60){
+            alert('你好棒呀');
+        }
+
+        // 双向选择：if....else....
+        let score01 = 59;
+        if (score01 > 60){
+            alert('通过');
+        }else{
+            alert('未通过');
+        }
+
+        //三目运算符
+        let score02 = 38;
+        let result = (score02 > 60)? '通过':'没通过';
+        alert(result);
+
+        //多向选择if...else if....else
+        let time = 12;
+        if (time < 12){
+            document.write('早上好');
+        }else if(time >= 12 && time < 20){
+            document.write('中午好');
+        }else{
+            document.write('晚上好');
+        }
+        document.write('<br/>');
+
+        // if语句的嵌套
+        let gendar = "女";
+        let height = 172;
+        if (gendar === "男"){
+            if (height > 170){
+                document.write('高个子男生');
+            }else{
+                document.write('身高还行的男生');
+            }
+        }else if (gendar === '女'){
+            if(height >= 170){
+                document.write('高个子女生');
+            }else if (height < 170){
+                document.write('娇小可爱型女生');
+            }else{
+                document.write('无法识别');
+            }
+        }else{
+            alert('请输入性别,才能进行判断');
+        }
+        document.write('<br/>')
+
+        // 选择结构：switch
+        let day = 3;
+        let week;
+
+        switch (day){
+            case 1:
+                week = '星期一';
+                break
+            case 2:
+                week = '星期二';
+                break
+            case 3:
+                week = '星期三';
+                break
+            case 4:
+                week = '星期四';
+                break
+            case 5:
+                week = '星期五';
+                break
+            case 6:
+                week = '星期六';
+                break
+            case 7:
+                week = '星期天';
+                break
+        }
+        document.write(week);
+
+        // break语句
+        /*
+        上面已经演示，如果不带break语句就会执行下面的语句因为当switch语句满足条件
+        时执行了那条语句但是没有带break语句他会向下执行因为script不需要编译所以他
+        是自上而下执行所以会执行到下一语句最终出现的结果会不准确，所以当要进行判断用
+        switch语句的时候得带上break语句。
+         */
+
+        //default语句
+        let n ;
+        let num = 7;
+        switch (num){
+            case 1:
+                n = '这个数是1';
+                break
+            case 2:
+                n = '这个数是2';
+                break
+            case 3:
+                n = '这个数是3';
+                break
+            case 4:
+                n = '这个数是4';
+                break
+            default:
+                alert('你输的是1-4里面的数吗');
+        }
+        document.write('<br/>');
+
+        // 3.4 循环结构
+        // while结构
+        // 计算1到100累加
+        let m = 1;
+        let sum = 0;
+        while(m <= 100){
+            sum = sum + m;
+            m++;
+        }
+        document.write(sum);
+
+        // do...while结构
+        let num1 = 2;
+        let sum01 = 0;
+        do {
+            num1++;
+            sum01 = sum01 +num1;
+        }while(num1 <= 3);
+        document.write(sum01);
+
+        // for结构
+        for (let a = 1; a < 10; a++){
+            document.write(a + '<br/>');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
