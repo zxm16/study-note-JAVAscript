@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第五章训练题</title>
+    <script>
+        /*
+        下面我们来尝试用这一章学习到的方法来删除字符串中的
+        某一个字符，如把“hello Lvey”中所有的"e"删除
+         */
+        let str = "hello Lvey";
+        let result = '';
+        for (let i = 0; i < str.length; i++){
+            if (str.charAt(i) !== 'e'){
+                result += str.charAt(i);
+            }
+        }
+        document.write(result);
+        document.write('<br/>');
+        /*
+        找出字符串
+        “Can you can a can sa a Canner can can a can"
+        中找出所有的“c”的个数，不区分大小写
+         */
+        let str01 = "Can you can a can sa a Canner can can a can";
+        let n = 0;
+        for (i = 0; i < str01.length; i++){
+            let str02 = str01.charAt(i);
+            if (str02.toLowerCase() === 'c'){
+                n += 1;
+            }
+        }
+        document.write(n);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
