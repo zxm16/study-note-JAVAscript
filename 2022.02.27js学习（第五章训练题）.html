@@ -31,6 +31,21 @@
             }
         }
         document.write(n);
+        document.write('<br/>');
+        /*
+        给大家任意一个字符串，然后统计一下里面有多少个数字
+         */
+        function getNum(str02){
+            let num = 0;
+            for (let n = 0; n < str02.length; n++){
+                let char = str02.charAt(n);
+                    if (!isNaN(char)){
+                        num++;
+                    }
+                }
+            return num;
+        }
+        document.write(getNum('123zsxdf2345'));
     </script>
 </head>
 <body>
