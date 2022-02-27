@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第五章字符串对象</title>
+  <script>
+    /// 5.2获取字符串长度
+    // 通过length来获取字符串长度
+    // 1.
+    let str = 'i love you!';
+    document.write(str.length);
+    document.write('<br/>');
+
+    // 2.
+    function numLength(n){
+      let str = n +'';
+      return str.length;
+    }
+    let str01 = numLength("wo ai ni");
+    document.write(str01);
+    document.write('<br/>');
+
+
+    /// 5.3大小写转化
+    // 1.用toLowerCase（）来将字符串中大写的字符转化为小写
+    let str02 = 'ZHANG CHI FAN';
+    document.write(str02.toLowerCase());
+    document.write('<br/>');
+
+    // 2.用toUpperCase（）来将字符串中的小写字符转化为大写
+    let str03 = 'zhang xin man';
+    document.write(str03.toUpperCase());
+    document.write('<br/>');
+
+
+    /// 5.4获取某个字符
+    // 1.找出字符串中的值
+    // 用charAt（x）来截取字符串中某一个字符
+    // 其中方法中的x代表字符串中的第几个元素
+    let str04 = '你好张吃饭！';
+    document.write(str04.charAt(3));
+    document.write(str04.charAt(6));
+
+    // 2.找出字符串中小于某元素的所有值
+    let str05 = 'what are you doing! ';
+    let result = '';
+    for (let i = 0; i < str05.length; i++){
+        if (str05.charAt(i) < 's'){
+            result += str05.charAt(i) + ',';
+        }
+    }
+    document.write(result);
+    document.write('<br/>');
+
+
+    /// 5.5截取字符串
+
+    // 用substring（start，end）函数来截取字符串中的元素
+    let str06 = '张吃饭的温暖小窝';
+    let str07 = str06.substring(2, 4);
+    document.write(str07);
+    document.write('<br/>');
+
+
+    /// 5.6替换字符串
+
+    // 方法1：将原字符串给出来替换
+    // replace('原字符串'， '替换字符串');
+    let str08 = '123456789';
+    let str10 = str08.replace('1234', '3456');
+    document.write(str10);
+    document.write('<br/>');
+
+    // 方法2:用正则表达式来替换
+    // replace（'正则表达式'， '替换字符串'）;
+    let str11 = str08.replace(/1234/g, '2345');
+    document.write(str11);
+    document.write('<br/>');
+
+
+    /// 5.7分割字符串
+
+    // split('x')来分割字符串形成数组
+    let str12 = 'HTML, JAVAScript, CSS';
+    let str13 = str12.split(",");
+    document.write(str13[0]);
+    document.write('<br/>');
+    document.write(str13[1]);
+    document.write('<br/>');
+    document.write(str13[2]);
+    document.write('<br/>');
+
+    // split(' ')来分割字符串形成数组
+    let str14 = 'i like eat zhang';
+    let str15 = str14.split(' ');
+    document.write(str15[0]);
+    document.write('<br/>');
+    document.write(str15[1]);
+    document.write('<br/>');
+    document.write(str15[2]);
+    document.write('<br/>');
+    document.write(str15[3]);
+    document.write('<br/>');
+
+    // split（''）来分割字符串来形成数组
+    let str16 = 'love';
+    let str17 = str16.split('');
+    document.write(str17[0]);
+    document.write('<br/>');
+    document.write(str17[1]);
+    document.write('<br/>');
+    document.write(str17[2]);
+    document.write('<br/>');
+    document.write(str17[3]);
+    document.write('<br/>');
+
+    // spit("-", x)来分割字符串
+    // 前面的"-"是作为分割符来操作的后面的元素
+    // 就是分割后取的数组元素个数
+    let str18 = '123-234-546-123-444';
+    let str19 = str18.split("-", 2);
+    document.write(str19);
+    document.write('<br/>');
+
+    let str20 = str18.split("-", 3);
+    document.write(str20);
+    document.write('<br/>');
+
+    let str21 = str18.split("-", 4);
+    document.write(str21);
+    document.write('<br/>');
+
+
+    // 5.8检索字符串的位置
+
+    // 方法1 indexOf（）检查特定字符串
+    // 如果检索得到就返回位置值
+    let str22 = 'i like you';
+    let str23 = str22.indexOf('like');
+    document.write(str23);
+    document.write('<br/>');
+
+    // 如果检索不到就返回-1
+    let str24 = str22.indexOf('ikey');
+    document.write(str24);
+    document.write('<br>');
+
+    // 方法2 lastIndexOf()就是检索字符串最后一次出现的位置
+    // 这样可以配合indexOf（）来检索一个字符首次出现的地方和最后一次出现的地方
+    let str25 = 'abcddcba';
+    let str26 = str25.indexOf('d');
+    document.write(str26);
+    document.write('<br/>');
+    let str27 = str25.lastIndexOf('d');
+    document.write(str27);
+    document.write('<br/>');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
