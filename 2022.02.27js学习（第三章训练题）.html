@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三章训练题</title>
+    <script>
+        /*
+        判断一个数是整数还是小数
+         */
+        function intNum(n){
+            if (parseInt(n) === parseFloat(n)){
+                document.write('这个数是整数');
+            }else{
+                document.write('这个数是小数');
+            }
+            document.write('<br/>');
+        }
+        intNum(2.25);
+        intNum(3.00);
+
+
+        /*
+        找出"水仙花数"
+        所谓水仙花数是指一个三位数，其各位数字的立方和等于该数的本身
+         */
+        let sum;
+        let n;
+        function numFlower(a, b, c){
+            let x = a * a * a;
+            let y = b * b * b;
+            let z = c * c * c;
+            n = x + y + z;
+            sum = a * 100 + b * 10 + c;
+            if (n === sum){
+                document.write('这三个数是水仙花数');
+            }else{
+                document.write('这就是一般的数');
+            }
+            document.write('<br/>');
+        }
+        numFlower(1, 5, 3);
+        // 这个得讲究顺序所以还不是最终版本而人们一般
+        // 不是经过计算的来所以还得重新思考新方法
+        let str = '';
+        for (let i = 100; i < 1000; i++ ){
+            let a = i % 100;
+            a = parseInt(a);
+            let b = a % 10;
+            b = parseInt(b);
+            let c = (i - a) / 100;
+            c = parseInt(c);
+            let sum = b * b *b + a * a * a + c * c * c;
+            if (i === sum){
+                str = str + i + ',';
+            }
+        }
+        document.write(str);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
