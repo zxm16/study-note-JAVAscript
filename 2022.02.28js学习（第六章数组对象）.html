@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组对象</title>
+</head>
+<script>
+    /// 6.3数组的获取
+    let arr = ['中国', '日本', '法国', '美国', '俄罗斯'];
+    document.write(arr);
+    document.write('<br/>');
+    document.write(arr[2]);
+    document.write('<br/>');
+
+
+    /// 6.4数组的赋值
+    let arr01 = ['中国', '日本', '法国', '美国', '俄罗斯'];
+    arr01[1] = '英国';
+    document.write(arr01);
+    document.write('<br/>');
+
+
+    /// 6.5获取数组长度
+    // 在以有数组的情况下获取数组的长度
+    let arr02 = ['中国', '日本', '法国', '美国', '俄罗斯'];
+    let n = arr02.length;
+    document.write(n);
+    document.write('<br/>');
+
+    // 在没有数组的情况下创建数组来获取长度
+    let arr03= [];
+    arr03[0] = '中国';
+    arr03[1] = '美国';
+    arr03[2] = '法国';
+    arr03[3] = '英国';
+    document.write(arr03.length);
+    document.write("<br/>");
+
+    // 提取数组每一个元素
+    for (let n = 0; n < arr03.length; n++){
+        document.write(arr03[n] + '<br/>');
+    }
+
+    // 数组正常情况下只用来储存同一类型的元素
+    // 当然也可以储存不同类型的数据不过很少见
+    let arr04 = ['中国', 123, '法国', '美国', '俄罗斯'];
+    for (let m = 0; m < arr04.length; m++){
+        document.write(arr04[m] + '<br/>');
+    }
+
+
+    /// 6.6截取数组某部分
+    // 用slice（x, y）函数来截取取值为前闭后开区间
+    document.write(arr04.slice(0, 2));
+    document.write('<br/>');
+
+
+    /// 6.7为数组添加元素
+
+    // 用unshift（x，y，.....）来添加元素
+    // 在数组最前面添加元素
+
+    let arr05 = ['中国', 123, '法国', ];
+    arr05.unshift('俄罗斯', '美国');
+    document.write(arr05);
+    document.write('<br/>');
+    // 用push（）函数来添加数组元素
+    // 其添加是在数组尾部
+
+    arr05.push('英国');
+    arr05[3] = '联合国';
+    document.write(arr05);
+    document.write('<br/>');
+
+
+    /// 6.8删除数组元素
+
+    // 删除数组中第一个元素用shift（）
+    arr05.shift();
+    document.write(arr05);
+    document.write('<br/>');
+
+    // 删除数组最后一个元素pop（）
+    // 这个函数是弹出跟python里一样
+    arr05.pop();
+    document.write(arr05);
+    document.write('<br/>');
+
+    /// 6.9数组大小比较
+    function up(a, b){
+        return a - b;
+    }
+    function down(a,b){
+        return b - a;
+    }
+    let arr06 = [1, 3, 5, 9, 5, 3, 2, 4]
+    arr06.sort(up);
+    document.write('升序' + arr06 + '<br/>');
+    arr06.sort(down);
+    document.write('降序' + arr06 + '<br/>');
+
+
+    // 6.10数组颠倒顺序
+    arr06.reverse();
+    document.write(arr06);
+    document.write('<br/>');
+
+
+    // 6.11将数组链接成字符串
+    document.write(arr06.join());
+    document.write('<br/>');
+    document.write(arr06.join('*'));
+    document.write('<br/>');
+    document.write(arr06.join(''));
+    document.write('<br/>');
+
+    // 去除什么字符在添加什么字符
+    document.write(arr06.splice('').join('*'));
+</script>
+<body>
+</body>
+</html>
