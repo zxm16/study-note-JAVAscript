@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第七章训练题</title>
+</head>
+<script>
+    /*
+    训练题：在页面显示时间
+    我们经常看见导航页面都会采用'今天是2022年1月2号 星期一'这样
+    的方式来显示时间
+     */
+    let d = new Date();
+    let myYear = d.getFullYear();
+    let myMonth = d.getMonth();
+    let myDay = d.getDate();
+    let week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"];
+    document.write('今年是' + myYear + '年' + myMonth + '月' + myDay + week[d.getDay() - 1]);
+    document.write('<br/>');
+</script>
+<body>
+</body>
+</html>
