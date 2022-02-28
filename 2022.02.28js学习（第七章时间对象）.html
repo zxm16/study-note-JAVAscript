@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间对象</title>
+  <script>
+      ///  7.2获取年月日
+
+      // 7.2.1获取年月日
+      // 例一
+      let n = new Date();
+      let myDay = n.getDate();
+      let myMonth = n.getMonth() + 1;
+      let myYear = n.getFullYear();
+      document.write('今天是' + myDay + '这个月是' + myMonth + '月份，今年是' + myYear);
+      document.write('<br/>');
+
+      // 例二
+      let d = new Date();
+      let time = d.getHours();
+      if (time >= 12&&time <= 18){
+          document.write('下午好！');
+      }else if (time < 12){
+          document.write('上午好！');
+      }else{
+          document.write('晚上好！');
+      }
+      document.write('<br/>');
+
+      // 7.2.2设置年，月，日
+      let d01 = new Date();
+      d01.setFullYear(2010, 3, 5);
+      document.write(d01);
+      document.write('<br/>');
+
+
+      /// 7.3操作时分秒
+
+      // 7.3.1获取时分秒
+      let d02 = new Date();
+      let myHours = d02.getHours();
+      let myMinutes = d02.getMinutes();
+      let mySeconds = d02.getSeconds();
+      document.write(myHours +':'+ myMinutes +':' + mySeconds);
+      document.write('<br/>');
+
+      // 7.3.设置时分秒
+      let d03 = new Date();
+      d03.setHours(14, 25, 25);
+      document.write(d03);
+      document.write('<br/>');
+
+
+      /// 7.4获取星期几
+      // 方法一
+      let d04 = new Date();
+      d04.getDay();
+      document.write(d04 + 1);
+      document.write('<br/>');
+
+      // 方法二
+      let week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
+      let d05 = new Date();
+      document.write("今天星期：" + week[d05.getDay() - 1]);
+      document.write('<br/>');
+  </script>
+</head>
+<body>
+</body>
+</html>
