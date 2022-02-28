@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第六章训练题</title>
+</head>
+<script>
+    /*
+    字符串和数组转换操作
+     */
+    let str = '你好张吃饭';
+    let str01 = str.split('').join('><');
+    let arr = str01.split("")
+    arr.push('>');
+    arr.unshift('<');
+    let result = arr.join('');
+    document.write(result);
+    document.write('<br/>');
+    /*
+    将字符串所有字符颠倒顺序
+     */
+    function reverseStr(str){
+        let arr = str.split('');
+        arr.reverse();
+        let result = arr.join('');
+        return  result;
+    }
+    document.write(reverseStr('张吃饭'));
+    document.write('<br/>');
+    /*
+    计算面积和体积，返回一个数组
+    设计一个函数可以计算一个长方体的底面积和体积，并且函数最终将面积和
+    体积的计算结果返回
+     */
+    function getSize(width, height, depth){
+        let area = width * height;
+        let volume = width * height * depth;
+        let size = [area, volume];
+        return size;
+    }
+    let arr01 = getSize(10, 20, 5);
+    document.write(arr01);
+</script>
+<body>
+
+</body>
+</html>
