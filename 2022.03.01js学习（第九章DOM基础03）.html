@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM基础03</title>
+    <script>
+        ///9.6插入元素
+
+        // 9.6.1appendChild()
+        // 插入的元素在列尾
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn");
+            oBtn.onclick = function ()
+            {
+                let oUl = document.getElementById("list");
+                let oTxt = document.getElementById('txt');
+                let textNode = document.createTextNode(oTxt.value);
+                let oLi = document.createElement("li");
+                oLi.appendChild(textNode);
+                oUl.appendChild(oLi);//***
+            };
+        }
+
+
+        // 9.6.2 insertBefore()
+        // 不同点在于插入的元素在列头
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn01');
+            oBtn.onclick = function ()
+            {
+                let oUl = document.getElementById('list01');
+                let oText = document.getElementById('txt01');
+                let textNode = document.createTextNode(oText.value);
+                let oLi = document.createElement('li');
+                oLi.appendChild(textNode);
+                oUl.insertBefore(oLi, oUl.firstElementChild);//***
+            }
+        }
+
+
+        /// 9.7删除元素
+        // 语法A.removeChild(B);
+
+        //9.7.1删除最后一列
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn02');
+            oBtn.onclick = function (){
+                let oUl = document.getElementById('list02');
+                oUl.removeChild(oUl.lastElementChild);
+            }
+        }
+
+        //9.7.2删除整个列表
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn03");
+            oBtn.onclick = function ()
+            {
+             let oUl = document.getElementById('list03');
+                document.body.removeChild(oUl);
+            }
+        }
+
+        /// 9.8复制列表
+        // 语法obj.cloneNode(bool)
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn04');
+            oBtn.onclick = function ()
+            {
+                let oUl = document.getElementById('list04');
+                document.body.appendChild(oUl.cloneNode(1));
+            }
+        }
+
+        /// 9.9替换元素
+        //语法：A.replaceChild(new, old)
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn05')
+            oBtn.onclick = function ()
+            {
+                let oFirst = document.querySelector("body *:first-child");
+                let oTag = document.getElementById('tag');
+                let oTxt = document.getElementById('txt02');
+                let oNewTag = document.createElement(oTag.value);
+                let oNewText = document.createTextNode(oTxt.value);
+                oNewTag.replaceChild(oNewText);
+                document.body.replaceChild(oNewTag, oFirst);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li>css</li>
+    <li>ccc</li>
+    <li>sss</li>
+</ul>
+<input id="txt" type="text"/>
+<input id="btn" type="button" value="插入"/>
+<p>-------------------</p>
+<ul id="list01">
+    <li>css</li>
+    <li>ccc</li>
+    <li>sss</li>
+</ul>
+<input id="txt01" type="text"/>
+<input id="btn01" type="button" value="插入"/>
+<p>-------------------</p>
+<ul id="list02">
+    <li>css</li>
+    <li>ccc</li>
+    <li>sss</li>
+    <li>sss</li>
+    <li>sss</li>
+</ul>
+<input id="btn02" type="button" value="删除"/>
+<p>-------------------</p>
+<ul id="list03">
+    <li>css</li>
+    <li>ccc</li>
+    <li>sss</li>
+    <li>sss</li>
+    <li>sss</li>
+</ul>
+<input id="btn03" type="button" value="删除"/>
+<p>-------------------</p>
+<ul id="list04">
+    <li>css</li>
+    <li>ccc</li>
+    <li>sss</li>
+    <li>sss</li>
+    <li>sss</li>
+</ul>
+<input id="btn04" type="button" value="复制"/>
+<p>-------------------</p>
+<hr/>
+<p>张吃饭的小窝</p>
+输入标签：<input id = 'tag' type="text" /><br />
+输入内容：<input id = 'txt02' type="text" /><br />
+<input id="btn05" type="button" value="替换" />
+</body>
+</html>
