@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM基础02</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        tr,td{
+            width: 80px;
+            height: 20px;
+            border: 1px solid gray;
+        }
+    </style>
+    <script>
+        window.onload = function ()
+        {
+            let oTable = document.createElement("table");
+            for (let i = 0; i < 3; i++)
+            {
+                let oTr = document.createElement('tr');
+                for (let j = 0; i < 3; j++){
+                    let oTd = document.createElement('Td');
+                    oTr.appendChild(oTd);
+                }
+                oTable.appendChild(oTr);
+            }
+            document.body.appendChild(oTable);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
