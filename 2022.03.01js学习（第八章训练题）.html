@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第八章训练题</title>
+    <script>
+        /*
+        生成随机验证码
+         */
+        var str = 'abcdefghijkmlnopqrstuvwsyz1234567890';
+        var arr = str.split("");
+        var result = '';
+        for (var i = 0 ; i < 4; i++)
+        {
+            var n = Math.floor(Math.random()*(arr.length + 1));
+            result += arr[n];
+        }
+        document.write(result);
+        document.write('<br/>');
+        /*
+        生成随机颜色值
+         */
+        function getRandomColor() {
+            let r = Math.floor(Math.random() * (256 + 1));
+            let g = Math.floor(Math.random() * (256 + 1));
+            let b = Math.floor(Math.random() * (256 + 1));
+            let rgb = "rgb(" + r + "," + g + "," + b + ")";
+            return rgb;
+        }
+        document.write(getRandomColor())
+    </script>
+</head>
+<body>
+
+</body>
+</html>
