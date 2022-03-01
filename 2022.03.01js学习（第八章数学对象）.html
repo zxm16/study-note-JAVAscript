@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数学对象</title>
+    <script>
+        /// 8.2Math对象的属性
+        document.write('圆周率为：' + Math.PI);
+        document.write('<br/>');
+
+
+        /// 8.3最大最小值：Max（），Min（）：
+        let a = Math.max(3, 5, 6, 9, 1, 2, 6, 8);
+        let b = Math.min(3, 5, 6, 9, 1, 2, 6, 8);
+        document.write('最大值' + a);
+        document.write('<br/>');
+        document.write('最小值' + b);
+        document.write('<br/>');
+
+
+        /// 8.5取整运算
+
+        // 8.5.1利用Math.floor(x)进行向下取整（向下取整的意思是返回最小的整数）
+        document.write('Math.floor(3)等于' + Math.floor(3) + '<br/>');
+        document.write('Math.floor(1.55)等于' + Math.floor(1.55) + '<br/>');
+        document.write('Math.floor(0.6)等于' + Math.floor(0.6) + '<br/>');
+        document.write('Math.floor(0.3)等于' + Math.floor(0.3) + '<br/>');
+        document.write('Math.floor(-1.1)等于' + Math.floor(-1.1) + '<br/>');
+        document.write('Math.floor(-2.2)等于' + Math.floor(-2.2) + '<br/>');
+
+        // 8.5.2利用ceil()向上取整（即返回大于或等于该数的指定最小整数）
+        document.write('Math.ceil(3)等于' + Math.ceil(3) + '<br/>');
+        document.write('Math.ceil(1.55)等于' + Math.ceil(1.55) + '<br/>');
+        document.write('Math.ceil(0.6)等于' + Math.ceil(0.6) + '<br/>');
+        document.write('Math.ceil(0.3)等于' + Math.ceil(0.3) + '<br/>');
+        document.write('Math.ceil(-1.1)等于' + Math.ceil(-1.1) + '<br/>');
+        document.write('Math.ceil(-2.2)等于' + Math.ceil(-2.2) + '<br/>');
+
+
+        /// 8.6三角函数
+        // 使用Math.sin/cos/tan/....（角度 * Math.PI / 180）来计算三角函数值
+        document.write('sin30:' + Math.sin(30 * Math.PI / 180) + '<br/>');
+        document.write('cos60:' + Math.cos(60 * Math.PI / 180) + '<br/>');
+        document.write('tan45:' + Math.tan(45 * Math.PI / 180) + '<br/>');
+
+        /// 8.7生成随机数
+        // 语法为：Math.random()
+
+        // 8.7.1随机生成某个范围内的'任意值'
+        // 1.语法：Math.random()*10(生成10之内的值)
+        document.write(Math.random() * 10 + '<br/>');
+        // 2.语法:Math.random()*m+n（生成n到m+n的中间值）
+        document.write(Math.random()* 10 + 8 + '<br/>');
+        // 3.语法:Math.random()*m-n（生成-n到m+(-n)的中间值）
+        document.write(Math.random()* 10 - 8 + '<br/>');
+        // 3.语法:Math.random()*m-m（生成-m到m的中间值）
+        document.write(Math.random()* 10 - 10 + '<br/>');
+
+        // 8.7.2随机生成某个范围内的整数
+        // 1.语法：Math.floor(Math.random() * 5)(生成0-4之内的整数)
+        document.write(Math.floor(Math.random() * 5) + '<br/>');
+        // 2.语法：Math.floor(Math.random() * (m + 1))(生成0-5之内的整数)
+        document.write(Math.floor(Math.random() * (5 + 1)) + '<br/>');
+        // 3.语法：Math.floor(Math.random() * (m + 1)+1)(生成1到任何数之间的整数)
+        document.write(Math.floor(Math.random() * (5 + 1) + 1) + '<br/>');
+        // 4.语法：Math.floor(Math.random() * (m - n + 1)+ n)(生成任意数到任何数之间的整数)
+        document.write(Math.floor(Math.random() * (5 - 1 + 1) + 1) + '<br/>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
