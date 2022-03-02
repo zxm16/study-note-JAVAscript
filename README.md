@@ -1,1 +1,1 @@
-# study-note-JAVAscript
+# study-note-JavaScript
