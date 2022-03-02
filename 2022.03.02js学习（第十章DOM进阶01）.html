@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM进阶01</title>
+    <script>
+        /// 10.1 HTML属性操作
+
+        // 10.1.1 获取HTML属性
+        // 案例一：获取静态DOM的属性值
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn');
+            oBtn.onclick = function ()
+            {
+                alert(oBtn.id);
+            }
+        }
+        document.write("<br/>");
+        // 案例二：获取动态DOM的属性值
+        window.onload = function ()
+        {
+            let oInput = document.createElement('input');
+            oInput.id = 'submit';//创建的button的id
+            oInput.type = 'button';//创建的button的类型
+            oInput.value = '提交';//创建的button上按钮的显示值
+            document.body.appendChild(oInput);
+            oInput.onclick = function ()
+            {
+                alert(oInput.id);
+            };
+        }
+        document.write("<br/>");
+        // 案例三：获取单行文本框的值
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn01');//绑定btn01的id
+            oBtn.onclick = function ()//创建oBtn的点击事件
+            {
+                let oText = document.getElementById('txt');//绑定text的id
+                alert(oText.value);//提供的警示为输入text的值
+            };
+        }
+        document.write("<br/>");
+        //案例四：获取单选框的值
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn02");
+            let oFruit = document.getElementsByName("fruit");
+            oBtn.onclick = function ()
+            {
+                for (let i = 0; i < oFruit.length; i++)
+                {
+                    if (oFruit[i].checked)
+                    {
+                        alert(oFruit[i].value)
+                    }
+                }
+            };
+        }
+        //案例五：获取复选框的值
+        window.onload = function ()
+        {
+            let oBnt = document.getElementById('btn03');
+            let oFruits = document.getElementsByName('fruits');
+            let str = '';
+            oBnt.onclick = function ()
+            {
+              for (let n = 0; n < oFruits.length; n++)
+              {
+                  if (oFruits[n].checked)
+                  {
+                      str += oFruits[n].value;
+                  }
+              }
+              alert(str);
+            };
+        }
+        //案例六：获取下拉列表的值
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn04");
+            let oSelect = document.getElementById("select");
+            oBtn.onclick = function ()
+            {
+              alert(oSelect.value);
+            };
+        }
+
+        // 10.1.2设置HTML属性值
+        // 语法obj.attr  = '值'
+
+        // 演示
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn05');
+            oBtn.onclick = function ()
+            {
+                alert(oBtn.value);
+            }
+        }
+        // 案例一；
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn06");
+            let oPic = document.getElementById("pic");
+            let flag = true;
+            oBtn.onclick = function ()
+            {
+             if (flag)
+             {
+                 oPic.src = "思维导图.png";
+                 flag = false;
+             }else {
+                 oPic.src = "图片1.png";
+                 flag = true;
+             }
+            };
+        }
+
+        // 10.2HTML属性操作
+        // 函数getAttribute(), setAttribute(), removeAttribute(), hasAttribute()
+
+        //10.2.1 getAttribute()
+        // 语法：obj.getAttribute('attr')
+        //方案一：获取固定属性
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn07');
+            oBtn.onclick = function ()
+            {
+                alert(oBtn.getAttribute('id'));
+            }
+        }
+        //方案二：获取自定义属性
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn08");
+            let i = 1;
+            oBtn.onclick = function ()
+            {
+                if (i === 1)
+                {
+                    alert(oBtn.data);
+                    i++;
+                }else if (i === 2){
+                    alert(oBtn.getAttribute("data"));
+                    i--;
+                }
+            };
+        }
+
+        // 10.2.2 setAttribute()
+        //设置元素的某个值
+        // 语法obj.setAttribute("attr", "值")
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn09");
+            oBtn.onclick = function ()
+            {
+              oBtn.setAttribute("value", "提交");
+            };
+        }
+
+        // 10.2.3 removeAttribute()
+        // 删除元素的某个值
+        // 语法：obj.removeAttribute()
+        // 方案一
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn10");
+            oBtn.onclick = function ()
+            {
+              oBtn.removeAttribute("value")
+            };
+        }
+        // 方案二
+        window.onload = function ()
+        {
+            let oBtnAdd = document.getElementById("btn11");
+            let oBtnRemove = document.getElementById("btn12");
+            let op = document.getElementsByTagName("text");
+            oBtnAdd.onclick = function ()
+            {
+                op.className = "main";
+            };
+            oBtnRemove.onclick = function ()
+            {
+              op.removeAttribute("style");
+            };
+        }
+    </script>
+</head>
+<body>
+<p>----------------------------------10.1获取HTML属性--------------------------------------</p>
+<input type="button" id="btn" value="按钮" class="myBtn" />
+<p>---------------------------------------------------------</p>
+<input type="text" id="txt" >
+<input type="button" id="btn01" value="按钮" class="myBtn" />
+<p>---------------------------------------------------------</p>
+<div>
+    <label><input type="radio" value="苹果" name="fruit" checked/>苹果</label>
+    <label><input type="radio" value="香蕉" name="fruit">香蕉</label>
+    <label><input type="radio" value="菠萝" name="fruit">菠萝</label>
+</div>
+<input type="button" id="btn02" value="获取" />
+<p>---------------------------------------------------------</p>
+<div>
+    <label><input type="checkbox" value="苹果" name="fruits" checked/>苹果</label>
+    <label><input type="checkbox" value="香蕉" name="fruits">香蕉</label>
+    <label><input type="checkbox" value="菠萝" name="fruits">菠萝</label>
+</div>
+<input type="button" id="btn03" value="获取" />
+<p>---------------------------------------------------------</p>
+<select id="select">
+    <option value="上海">上海</option>
+    <option value="北京">北京</option>
+    <option value="深圳">深圳</option>
+    <option value="武汉">武汉</option>
+</select>
+<input type="button" value="获取" id="btn04">
+<p>-------------------------设置HTML属性值--------------------------------</p>
+<input type="button" value="修改" id="btn05">
+<p>---------------------------------------------------------</p>
+<input type="button" value="修改" id="btn06"/>
+<br/>
+<img id="pic" src="思维导图.png">
+
+<p>----------------------------------10.2HTML属性操作--------------------------------------</p>
+<input type="button" value="修改" id="btn07" />
+<p>---------------------------------------------------------</p>
+<input type="button" value="修改" id="btn08" data="张吃饭的小窝"/>
+<p>---------------------------------------------------------</p>
+<input type="button" value="修改" id="btn09" />
+<p>---------------------------------------------------------</p>
+<input type="button" value="修改" id="btn10" />
+<p>---------------------------------------------------------</p>
+<p class="text">张吃饭的小窝</p>
+<input type="button" value="添加" id="btn11" />
+<input type="button" value="删除" id="btn12" />
+</body>
+</html>
