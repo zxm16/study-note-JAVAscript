@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM进阶02</title>
+    <style>
+        .main{
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #box02{
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+        }
+        #box03{
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+        }
+        .newBox{
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+        }
+        .oldBox{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+        #box05{
+
+        }
+    </style>
+    <script>
+        // 10.2.4 hasAttribute()
+        // 判断元素是否含有某个元素
+        // 语法：obj.hasAttribute()
+        window.onload = function ()
+        {
+            let oP = document.getElementsByTagName("p");
+            if (oP[0].hasAttribute("class"))
+            {
+                oP[0].onclick = function ()
+                {
+                    oP[0].removeAttribute("class");
+                };
+            }
+
+        }
+
+
+        /// 10.3获取CSS属性操作
+
+        // 10.3.1 获取CSS属性值
+        // 语法 obj.getComputeStyle(obj).attr
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn");
+            let oBox = document.getElementById("box");
+            oBtn.onclick = function ()
+            {
+              alert(getComputedStyle(oBox).backgroundColor);
+            };
+        }
+
+        // 10.3.2 设置CSS属性值
+        //1.style属性
+        // 语法obj.style.attr = "值"
+        // 案例一：改变属性
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn01');
+            let oBox = document.getElementById('box01');
+            oBtn.onclick = function ()
+            {
+              oBox.style.backgroundColor = "lightskyblue";
+            };
+        }
+        // 案例二：让输入的属性值赋值给指定容器的属性值
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('btn12')
+            let oBox = document.getElementById('box02')
+            oBtn.onclick = function ()
+            {
+                let attr = document.getElementById("attr").value;
+                let val = document.getElementById("val").value;
+                oBox.style[attr] = val;
+            };
+        }
+        //2.style属性
+        // 语法obj.style.cssText = "值"
+        // 案例一
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn03");
+            let oBox =document.getElementById("box03");
+            oBtn.onclick = function ()
+            {
+                let txt = document.getElementById("txt").value;
+                oBox.style.cssText = txt;
+            };
+        }
+        // 案例二
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn04");
+            let oBox = document.getElementById("box04");
+            oBtn.onclick = function ()
+            {
+              oBox.className = 'newBox';
+            };
+        }
+
+        // 10.3.3 最后一个问题
+        // 方案一
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn05");
+            let oBox = document.getElementById("box05");
+            oBtn.onclick = function ()
+            {
+              alert(oBox.style.width);
+            };
+        }
+        // 方案二
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn06");
+            let oBox = document.getElementById("box06");
+            oBtn.onclick = function ()
+            {
+              let width = getComputedStyle(oBox).width;
+              alert("宽度为:" + width);
+            };
+        }
+    </script>
+</head>
+<body>
+<p class="main"></p>
+<p>---------------------10.3获取CSS属性操作------------------------------</p>
+<input type="button" value="获取" id="btn"/>
+<div id="box"></div>
+<p>--------------------------------------</p>
+<input type="button" value="获取" id="btn01"/>
+<div id="box01"></div>
+<p>--------------------------------------</p>
+属性：<input id="attr" type="text"/>
+<br/>
+取值：<input id="val" type="text"/>
+<br/>
+<input type="button" value="设置" id="btn02"/>
+<div id="box02"></div>
+<p>--------------------------------------</p>
+<input id="txt" type="text"/>
+<input type="button" value="设置" id="btn03"/>
+<br/>
+<div id="box03"></div>
+<p>--------------------------------------</p>
+<input type="button" id="btn04" value="切换">
+<div id="box04" class="oldBox"></div>
+<p>--------------------------------------</p>
+<input type="button" value="获取宽度" id="btn05">
+<div id="box05" style=" width: 100px;height: 100px;background-color: pink;"></div>
+<p>--------------------------------------</p>
+<input type="button" value="获取宽度" id="btn06">
+<div id="box06" style=" width: 100px;height: 100px;background-color: blue;"></div>
+</body>
+</html>
