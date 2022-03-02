@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM进阶03</title>
+    <script>
+        // 10.4DOM遍历
+        // 10.4.1查找父元素
+        // 语法：obj.parentNode
+        window.onload = function ()
+        {
+            let oTd = document.getElementsByTagName("td");
+            for (let i = 0; i < oTd.length; i++)
+            {
+                oTd[i].onclick = function ()
+                {
+                  let oParent = this.parentNode;
+                  oParent.style.color = "blue";
+                  oParent.style.backgroundColor = "red";
+                };
+            }
+        }
+
+        // 10.4.2查找子元素
+        // 示例一
+        window.onload = function ()
+        {
+            let oUl = document.getElementById("list");
+            let childNodeLen = oUl.childNodes.length;
+            let childLen = oUl.children.length;
+            alert("childNodeLen长度为：" + childNodeLen + "childLen长度为：" + childLen);
+        }
+        // 示例二
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button");
+            let oUl = document.getElementById("list01");
+            oBtn.onclick = function ()
+            {
+              oUl.removeChild(oUl.lastChild);
+              /*
+              不能一次性将最后一个子元素删除因为<li>与<li>
+              中有字符串和换行符所以换行符就是一个节点所以得
+              两次点击才能消除
+               */
+            };
+        }
+        // 示例三：用nodeType来判断
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button01");
+            let oUl = document.getElementById("list02");
+            oBtn.onclick = function ()
+            {
+                if (oUl.lastChild.nodeType === 3)
+                {
+                    oUl.removeChild(oUl.lastChild);
+                    oUl.removeChild(oUl.lastChild);
+                }else {
+                    oUl.removeChild(oUl.lastChild);
+                }
+            };
+        }
+        // 示例四用lastElementChild()来操作子元素
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button02");
+            let oUl = document.getElementById("list03");
+            oBtn.onclick = function ()
+            {
+                oUl.removeChild(oUl.lastElementChild);
+            };
+        }
+        // 10.4.2查找兄弟元素
+        // 1.previousSibling,nextSibling
+        // 2.previousElementSibling,nextElementSibling
+        // 上面和下面的都能寻找兄弟节点但是1会包含空节点所以想要只寻找兄弟节点推荐用后面的函数
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button03");
+            let oUl = document.getElementById("list04");
+            oBtn.onclick = function ()
+            {
+                let preElement = oUl.children[2].previousElementSibling;
+                oUl.removeChild(preElement);
+            };
+        }
+        document.write('<br/>');
+
+        //10.5 innerHTML 和 innerText
+        // 示例一：
+        window.onload = function ()
+        {
+            let oImg = document.createElement("img");
+            oImg.className = "pic";
+            oImg.src = "图片1.png";
+            oImg.style = "1px solid silver";
+            document.body.appendChild(oImg)
+        }
+        document.write('<br/>');
+
+
+    </script>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        table,tr,td{
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<p>-----------------------------------------</p>
+<table>
+    <caption>考试成绩表</caption>
+    <tr>
+        <td>小明</td>
+        <td>80</td>
+        <td>80</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>小芳</td>
+        <td>90</td>
+        <td>90</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>小杰</td>
+        <td>100</td>
+        <td>100</td>
+        <td>100</td>
+    </tr>
+</table>
+<p>-----------------------------------------</p>
+<ul id="list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+<p>-----------------------------------------</p>
+<ul id="list01">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>vue.js</li>
+    <li>node.js</li>
+</ul>
+<input type="button" value="删除" id="button">
+<p>-----------------------------------------</p>
+<ul id="list02">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>vue.js</li>
+    <li>node.js</li>
+</ul>
+<input type="button" value="删除" id="button01">
+<p>-----------------------------------------</p>
+<ul id="list03">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>vue.js</li>
+    <li>node.js</li>
+</ul>
+<input type="button" value="删除" id="button02">
+<p>-----------------------------------------</p>
+<ul id="list04">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>vue.js</li>
+    <li>node.js</li>
+</ul>
+<input type="button" value="删除" id="button03">
+</body>
+</html>
