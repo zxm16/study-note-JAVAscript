@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件基础</title>
+    <style>
+        #btn{
+            display: inline-block;
+            width: 80px;
+            height: 24px;
+            font-family: 微软雅黑;
+            font-size: 15px;
+            text-align: center;
+            border-radius: 3px;
+            background-color: deepskyblue;
+            color: white;
+            cursor: pointer;
+        }
+        #btn:hover{
+            background-color: dodgerblue;
+        }
+    </style>
+    <script>
+        ///11.2事件调用方式
+
+        // 11.2.1在JavaScript标签中调用
+        // 语法：obj.事件名 = function()
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button")
+            oBtn.onclick = function ()
+            {
+              alert('欢迎收听你的月亮我的心好男人就是我，我就是张吃饭！')
+            };
+        }
+
+        // 11.2.2在元素中调用
+        function alertMes()
+        {
+            alert('欢迎收听你的月亮我的心好男人就是我，我就是张吃饭！');
+        }
+
+
+        ///11.3鼠标事件
+        // 11.3.1鼠标单击
+        // 案例一
+        window.onload = function ()
+        {
+            let oDiv = document.getElementById("btn");
+            oDiv.onclick = function ()
+            {
+                alert("玩我呢？");
+            };
+        }
+        // 案例二
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button03");
+            oBtn.onclick = alertMes01;
+            function alertMes01() {
+              alert('欢迎收听你的月亮我的心好男人就是我，我就是张吃饭！');
+            };
+        }
+
+        // 11.3.2鼠标移入和鼠标移出
+        // 用onmouseover和onmouseout来进行操作
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('content');
+            oBtn.onmouseover = function ()
+            {
+                this.style.color = 'red';
+            };
+            oBtn.onmouseout = function ()
+            {
+                this.style.color = 'blue';
+            };
+        }
+
+        // 11.3.2鼠标按下和鼠标松开
+        // 用onmousedown和onmouseup来进行操作
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById('button04');
+            let oDiv = document.getElementById('title');
+            oBtn.onmousedown = function ()
+            {
+                oDiv.style.color = 'deepskyblue';
+            };
+            oBtn.onmouseup = function ()
+            {
+                oDiv.style.color = 'pink';
+            };
+        }
+
+        ///11.4键盘事件
+        // 用onkeydown和onkeyup来进行操作
+        // 示例一：
+        window.onload = function ()
+        {
+            let oTxt = document.getElementById('txt');
+            let oNum = document.getElementById('num');
+            oTxt.onkeydown = function ()
+            {
+              let str = oTxt.value;
+              oNum.innerHTML = str.length;
+            };
+        }
+        // 示例二：
+        window.onload = function ()
+        {
+            let oTxt = document.getElementById('txt');
+            let oDiv = document.getElementById('num01');
+            let myregex = /^[0-9]*$/;
+            oTxt.onkeyup = function ()
+            {
+                if (myregex.test(oTxt.value))
+                {
+                    oDiv.innerHTML = "输入正确";
+                }else {
+                    oDiv.innerHTML = "必须输入正确的数字";
+                }
+            };
+        }
+
+
+        ///11.5表单事件
+        // 11.5.1onfocus和onblur
+        // 示例一：
+        window.onload = function ()
+        {
+            let oSearch = document.getElementById('search');
+            oSearch.onfocus = function ()
+            {
+              if (this.value === '百度一下，你就知道')
+              {
+                  this.value = "";
+              }
+            };
+            oSearch.onblur = function ()
+            {
+              if (this.value === "")
+              {
+                  this.value = "百度一下，你就知道";
+              }
+            };
+        }
+        // 示例二：
+        window.onload = function ()
+        {
+            let oTxt = document.getElementById("text");
+            oTxt.focus();
+        }
+
+        // 11.5.2 onselect事件
+        // 示例一：
+        window.onload = function ()
+        {
+            let oTxt01 = document.getElementById('txt03');
+            let oTxt02 = document.getElementById('txt04');
+            oTxt01.onselect = function ()
+            {
+              alert("你选中了单行文本框中的内容");
+            };
+            oTxt02.onselect = function ()
+            {
+              alert("你选中了多行文本框中的内容")
+            };
+        }
+        // 示例二：（select（）方法）
+        window.onload = function ()
+        {
+            let oSearch = document.getElementById('text05');
+            oSearch.onclick = function ()
+            {
+                this.select();
+            };
+        }
+
+        // 11.5.3 onchange事件
+        // 案例一:onchange事件用于单选框
+        window.onload = function ()
+        {
+            let oFruit = document.getElementsByName("fruit");
+            let oP = document.getElementById("content02");
+            for (let i = 0; i < oFruit.length; i++)
+            {
+                oFruit[i].onchange = function ()
+                {
+                  if (this.checked)
+                  {
+                      oP.innerHTML = '你选择的是' + this.value;
+                  }
+                };
+            }
+        }
+        // 案例二:onchange事件用于多选选框
+        window.onload = function ()
+        {
+            let oFruit = document.getElementsByName("fruit01");
+            let oP = document.getElementById("selectAll");
+                oP.onchange = function ()
+                {
+                  if (this.checked)
+                  {
+                      for (let i = 0; i < oFruit.length; i++)
+                      {
+                          oFruit[i].checked = true;
+                      }
+                  }else{
+                      for (let i = 0;i < oFruit.length; i++ )
+                      {
+                          oFruit[i].checked = false;
+                      }
+                  }
+                };
+        }
+        // 案例二:onchange事件用于下拉列表
+        window.onload = function ()
+        {
+            let oList = document.getElementById('list');
+            oList.onchange = function ()
+            {
+                let link = this.options[this.selectedIndex].value;
+                window.open(link);
+            }
+        }
+
+
+        ///11.6编辑事件
+        // 11.6.01oncopy
+        // 在Javascript中可以用oncopy禁止复制
+        window.onload = function ()
+        {
+            document.body.oncopy = function ()
+            {
+              return false;
+            };
+        }
+        // 11.6.02onselectstart
+        // 在Javascript中可以用onselectstart来防止页面的被选取
+        window.onload = function ()
+        {
+            document.body.onselectstart = function ()
+            {
+              return false;
+            };
+        }
+        // 11.6.02oncontextmenu
+        // 在Javascript中可以用oncontextmenu来禁止鼠标右键
+        window.onload = function ()
+        {
+            document.oncontextmenu = function ()
+            {
+              return false;
+            };
+        }
+
+
+        ///11.7页面事件
+        // 11.7.1 onload
+        // 在Javascript中可以用onload表示加载完成后再执行一个事件
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn01");
+            oBtn.onclick = function ()
+            {
+             alert('JavaScript');
+            };
+        }
+        // 11.7.2 onbeforeunload
+        // 在JavaScript中可以用onbeforeunload表示离开页面前触发的事件
+        window.onload = function ()
+        {
+            alert('欢迎来到张吃饭的小窝');
+        }
+        window.onbeforeunload = function (e)
+        {
+            e.returnValue = '记得常来';
+        }
+    </script>
+</head>
+<body>
+<p>-----------------------------------------11.2事件调用方式----------------------------------------------</p>
+<p>-------------------------在JavaScript标签中调用--------------------------------------</p>
+<input type="button" value="点击" id="button">
+<p>-------------------------------在元素中调用--------------------------------</p>
+<p>---------------------案例一----------------------------</p>
+<input type="button" value="点击" id="button01" onclick="alertMes()">
+<p>---------------------案例二----------------------------</p>
+<input type="button" value="点击" id="button02" onclick="alertMes('欢迎收听你的月亮我的心好男人就是我，我就是张吃饭！')">
+<p>-----------------------------------------11.3鼠标事件--------------------------------------------------</p>
+<p>------------------------11.3.1鼠标单击------------------------------</p>
+<p>---------------------案例一----------------------------</p>
+<div id="btn">调试代码</div>
+<p>---------------------案例二----------------------------</p>
+<input type="button" value="点击" id="button03">
+<p>---------------------11.3.2鼠标移入和鼠标移出-------------------------</p>
+<p id="content">欢迎来到张吃饭的小屋</p>
+<p>---------------------11.3.2鼠标按下和鼠标松开-------------------------</p>
+<h1 id="title">张吃饭的小屋</h1>
+<hr/>
+<input type="button" value="按钮" id="button04">
+<p>-----------------------------------------11.4键盘事件--------------------------------------------------</p>
+<p>---------------------案例一----------------------------</p>
+<input id="txt" type="text" />
+<div>字符串长度为：<span id="num">0</span></div>
+<p>---------------------案例二----------------------------</p>
+<input id="txt01" type="text" />
+<div id="content01" style="color: red;"></div>
+<p>-----------------------------------------11.5表单事件--------------------------------------------------</p>
+<p>------------------------11.5.1onfocus和onblur------------------------------</p>
+<p>---------------------案例一----------------------------</p>
+<input id="search" type="text" value="百度一下，你就知道"/>
+<input id="button05" type="button" value="搜索">
+<p>---------------------案例二----------------------------</p>
+<input type="text" id="text">
+<p>------------------------11.5.2 onselect事件---------------------------------</p>
+<p>---------------------案例一----------------------------</p>
+<input id="txt03" type="text" value="张吃饭的小窝"><br/>
+<textarea id="txt04" cols="20" rows="5">张吃饭的小窝</textarea>
+<p>---------------------案例二：select（）事件----------------------------</p>
+<input type="text " id="text05" value="百度一下，你就知道">
+<p>------------------------11.5.3 onchange事件----------------------------------</p>
+<p>---------------------案例一:onchange事件用于单选框----------------------------</p>
+<div>
+    <label><input type="radio" name="fruit" value="苹果">苹果</label>
+    <label><input type="radio" name="fruit" value="香蕉">香蕉</label>
+    <label><input type="radio" name="fruit" value="菠萝">西瓜</label>
+</div>
+<p id="content02"></p>
+<p>---------------------案例二:onchange事件用于多选选框----------------------------</p>
+<div>
+    <p><label><input id="selectAll" type="checkbox">全选/返选</label></p>
+    <label><input type="checkbox" name="fruit01" value="苹果">苹果</label>
+    <label><input type="checkbox" name="fruit01" value="香蕉">香蕉</label>
+    <label><input type="checkbox" name="fruit01" value="菠萝">西瓜</label>
+</div>
+<p>---------------------案例三:onchange事件用于下拉列表----------------------------</p>
+<select id="list">
+    <option value="http://www.bilibili.com">哔哩哔哩</option>
+    <option value="http://www.baidu.com">百度</option>
+    <option value="http://www.qq.com">QQ</option>
+</select>
+<p>-----------------------------------------11.6编辑事件--------------------------------------------------</p>
+<div>张吃饭的小窝你是复制不来的</div>
+<p>-----------------------------------------11.7页面事件--------------------------------------------------</p>
+<p>------------------------11.7.1 onload------------------------------</p>
+<input id="btn01" type="button" value="提交">
+<p>------------------------11.7.2 onbeforeunload------------------------------</p>
+</body>
+</html>
