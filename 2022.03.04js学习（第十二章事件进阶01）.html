@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件进阶01</title>
+    <script>
+        /// 十二章 事件进阶
+
+        // 12.1事件监听
+        // 12.1.1事件处理器
+        // 基本语法oBtn.onclick = function (){}
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button01");
+            oBtn.onclick = function ()
+            {
+                alert("今天是奋斗的一天");
+            };
+            oBtn.onclick = function ()
+            {
+                alert("欢迎来到账吃饭的小窝");
+            };
+            oBtn.onclick = function ()
+            {
+                alert('下次再来');
+            };
+        }
+
+        // 12.1.2事件监听器
+        // 基础语法obj.addEventListener(type, fn, false)
+        // 案例一:addEventListener()实践
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button02");
+            oBtn.addEventListener("click", getMes, false);
+            function getMes()
+            {
+                alert("欢迎来到张吃饭的小屋");
+            }
+        }
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button03");
+            oBtn.addEventListener("mouseover", getMes01, false);
+            function getMes01() {
+                alert("欢迎你");
+            }
+        }
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button04");
+            oBtn.addEventListener("mouseout", getMes02, false);
+            function getMes02() {
+                alert("别划走呀");
+            }
+        }
+        // 案例二：addEventListener()的多次事件绑定
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button05");
+            function getMes01()
+            {
+                alert("第一");
+            }
+            function getMes02()
+            {
+                alert("第二");
+            }
+            function getMes03()
+            {
+                alert("第三");
+            }
+            oBtn.addEventListener("click", getMes01, false);
+            oBtn.addEventListener("click", getMes02, false);
+            oBtn.addEventListener("click", getMes03, false);
+        }
+        // 案例三：解除'事件监听器'添加的事件
+        window.onload = function ()
+        {
+            let oP = document.getElementById("content");
+            let oBtn = document.getElementById("button");
+            oP.addEventListener("click", changeColor, false);
+            oBtn.addEventListener("click", function () {
+                oP.removeEventListener("click", changeColor, false);
+            }, false);
+            function changeColor() {
+                this.style.color = "pink";
+            }
+        }
+        //案例四：解除'事件处理器'添加的事件
+        window.onload = function ()
+        {
+            let oP = document.getElementById("content01");
+            let oBtn = document.getElementById("button07");
+            oP.onclick = changeColor;
+            oBtn.addEventListener("click", function () {
+                oP.onclick = null;
+            }, false);
+            function changeColor() {
+                this.style.color = "deepskyblue";
+            }
+        }
+        //案例五：限制事件只执行一次
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button08");
+            oBtn.addEventListener("click", justOne, false);
+            function justOne()
+            {
+                alert("你好棒棒呀");
+                oBtn.removeEventListener("click", justOne, false);
+            }
+        }
+    </script>
+</head>
+<body>
+<p>------------------------------------------------12.1事件监听----------------------------</p>
+<p>---------------------------------------12.1.1事件处理器---------------------------</p>
+<input type="button" value="点击" id="button01">
+<p>---------------------------------------12.1.2事件监听器---------------------------</p>
+<p>-------------案例一-----------</p>
+<input type="button" value="点击" id="button02">
+<input type="button" value="到这来" id="button03">
+<input type="button" value="快来挨着我" id="button04">
+<p>-------------案例二-----------</p>
+<input type="button" value="点击" id="button05">
+<p>-------------案例三-----------</p>
+<p id="content">来碰一下我</p>
+<input type="button" value="解除" id="button06">
+<p>-------------案例四-----------</p>
+<p id="content01">来碰一下我</p>
+<input type="button" value="解除" id="button07">
+<p>-------------案例五-----------</p>
+<input type="button" value="弹出" id="button08">
+
+</body>
+</html>
