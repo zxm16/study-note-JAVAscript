@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件进阶段02</title>
+    <style>
+        span{
+            font-weight: bold;
+            color: pink;
+        }
+    </style>
+    <script>
+        //12.2 event事件
+        // 就是来记录事件的
+        // 12.2.1type
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button01");
+            oBtn.onclick = function (e)
+            {
+                alert(e.type);
+            }
+        }
+        // 12.2.2 keyCode
+        // 语法event.keyCode
+        // 案例一
+        window.onload = function ()
+        {
+            document.onkeydown = function (e)
+            {
+                if (e.shiftKey||e.altKey||e.ctrlKey)
+                {
+                    alert("禁止使用shift，alt， ctrl键")
+                }
+            }
+        }
+        // 案例二：获取'上下左右'方向键
+        window.onload = function ()
+        {
+            let oSpan = document.getElementsByName("span")[0];
+            window.addEventListener("keydown", function (e){
+                if (e.keyCode === 38||e.keyCode === 87)
+                {
+                    oSpan.innerHTML = "上";
+                }
+            },false)
+        }
+    </script>
+</head>
+<body>
+<p>------------------------------------------------12.2 event事件----------------------------</p>
+<p>--------------------------12.2.1 type---------------------------</p>
+<input type="button" value="点我" id="button01">
+<p>-----------------------12.2.2 keyCode---------------------------</p>
+<p>-------------案例一-----------</p>
+<div>点一点键盘</div>
+<p>-------------案例二-----------</p>
+<div>按一下方向键<span></span></div>
+
+</body>
+</html>
