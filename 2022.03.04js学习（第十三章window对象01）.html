@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>windows对象</title>
+    <script>
+        // 13.2.1 打开窗口
+        // 语法：window.open(url, target)
+        // 示例一：打开网站
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button01");
+            oBtn.onclick = function ()
+            {
+                window.open("http://www.bilibili.com");
+            };
+        }
+        // 示例二：打开空白窗口
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button02");
+            oBtn.onclick = function ()
+            {
+              let opener = window.open()
+              opener.document.write("这是一个空窗口");
+              opener.document.body.style.backgroundColor = "deepskyblue";
+            };
+        }
+        // 示例三：往空白窗口输出一个页面
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button03");
+            let opener = null;
+            oBtn.onclick = function ()
+            {
+                opener = window.open();
+                let strHtml = '<!DOCTYPE html>\
+                <html>\
+                <head>\
+                <title></title>\
+                <body>\
+                <strong>张吃饭的小窝</strong>\
+                </dody>\
+                </html>';
+                opener.document.write(strHtml);
+            }
+        }
+    </script>
+</head>
+<body>
+<p>----------------------------------------13.2.1 打开窗口----------------------------</p>
+<p>-------------------示例一：打开网站----------------</p>
+<input type="button" value="打开" id="button01">
+<p>-------------------示例二：打开空白窗口-------------</p>
+<input type="button" value="打开" id="button02">
+<p>-------------------示例三：往空白窗口输出一个页面-------------</p>
+<input type="button" value="打开" id="button03">
+
+
+</body>
+</html>
