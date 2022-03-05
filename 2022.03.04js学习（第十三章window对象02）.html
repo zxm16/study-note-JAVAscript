@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid silver;
+        }
+    </style>
+    <script>
+        //示例4：操作空窗口元素
+        // window.onload = function ()
+        // {
+        //     let oBtn = document.getElementById("input");
+        //     let opener = null;
+        //
+        //     oBtn[0].onclick = function ()
+        //     {
+        //         opener = window.open();
+        //         let strHtml = '<!DOCTYPE html>\
+        //                         <html>\
+        //                         <head>\
+        //                         <title></title>\
+        //                         <body>\
+        //                         <strong>张吃饭的小窝</strong>\
+        //                         </dody>\
+        //                         </html>';
+        //         opener.document.write(strHtml);
+        //     };
+        //
+        //     oBtn[1].onclick = function ()
+        //     {
+        //         let oDiv = opener.document.getElementsByTagName("div")[0];
+        //         oDiv.style.fontWeight = "bold";
+        //         oDiv.style.color = "pink";
+        //     };
+        // }
+
+
+        // 13.2.2 关闭窗口
+        // 语法window.close()
+        // 示例一：
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("btn");
+            oBtn.onclick = function ()
+            {
+                window.close();
+            }
+        }
+
+        // 示例二：同时打开和关闭页面
+        window.onload = function ()
+        {
+            let oBtnOpen = document.getElementById("btn01");
+            let oBtnClose = document.getElementById("btn02");
+            let opener = null;
+            oBtnOpen.onclick = function ()
+            {
+               opener = window.open();
+            };
+            oBtnClose.onclick = function ()
+            {
+                opener.close();
+            };
+        }
+
+        /// 13.3对话框
+
+        // 13.3.1 alert()用法
+        // 语法alert（'提示文字'）
+        alert("欢迎来到张吃饭的小屋");
+
+        // 13.3.2 confirm()用法
+        // 语法confirm（"提示文字"）
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button02");
+            oBtn.onclick = function ()
+            {
+                if (confirm("确定要回到张吃饭的小窝吗？"))
+                {
+                    window.location.href = "http://www.bilibili.com";
+                }else {
+                    document.write("你取消了跳转");
+                };
+            }
+        }
+
+        // 13.3.3 prompt()用法
+        // 语法：prompt("提示文字")
+        window.onload = function ()
+        {
+            let oBtn = document.getElementById("button03");
+            oBtn.onclick = function ()
+            {
+              let name = prompt("请输入你的名字");
+              document.write("欢迎来到<strong>" + name + "的小屋</strong>");
+            };
+        }
+
+        /// 13.4定时器
+
+        // 13.4.1 setTimeout()用法
+        // 语法:setTimeout(code, time)
+        // 示例一:定时器来提示
+        window.onload = function ()
+        {
+            setTimeout('alert("欢迎来到张吃饭的小屋");', 2000);
+        }
+        // 示例二:setTimeout（code，time）中code是函数
+        window.onload = function ()
+        {
+            let mesGet = function ()
+            {
+              alert("张吃饭的小屋值得你拥有")
+            };
+            setTimeout(mesGet, 1000);
+        }
+        // 13.4.1 clearTimeout()用法
+        window.onload = function ()
+        {
+            let oBtnAdd = document.getElementById("btn03");
+            let oBtnClear = document.getElementById("button04");
+            let oTimer = null;
+            let MesAlert = function ()
+            {
+                alert("过了两秒,我来了");
+            };
+            oBtnAdd.onclick = function ()
+            {
+                oTimer = setTimeout(MesAlert, 2000);
+            };
+            oBtnClear.onclick = function ()
+            {
+              clearTimeout(oTimer);
+            };
+        }
+        // 13.4.2 setInterval()和clearInterval（）循环定时器
+        // setInterval(code， time)
+        // 示例一：数字定时器（添加定时器）
+        let n = 5;
+        window.onload = function ()
+        {
+            let cuntDown = function ()
+            {
+                if (n > 0)
+                {
+                    n--;
+                    document.getElementById("num").innerHTML = n;
+                }
+            }
+            setInterval(cuntDown, 1000);
+        }
+        // 示例二：颜色变换器(去除定时器)
+        window.onload = function ()
+        {
+            let oBtnStart = document.getElementById("button05");
+            let oBtnEnd = document.getElementById("button06");
+            let oDiv = document.getElementById("div");
+            let Color = ["red", "orange", "yellow", "green", "blue", "purple"];
+            let timer = null;
+            let i = 0;
+            let changeColor = function ()
+            {
+                oDiv.style.backgroundColor = Color[i];
+                i++;
+                i = i % Color.length;
+            }
+            oBtnStart.onclick = function ()
+            {
+                timer = setInterval(changeColor, 1000);
+            };
+            oBtnEnd.onclick =function ()
+            {
+                clearInterval(timer);
+            };
+
+        }
+
+        /// 13.5Location对象
+        // 13.5.1 window.locaton.herf
+        let url = window.location.href;
+        document.write("当前页面地址是：" + url);
+        //
+        // setTimeout(function (){
+        //   window.location.href = "http://www.bilibili.com"
+        // }, 2000)
+
+        // 13.5.2window.location.search
+        // 语法：window.location.search
+        document.write("描点链接：" + window.location.search);
+
+        /// 13.6  Navigator对象
+        // 语法 window.navigator.userAgent
+        // 用来浏览浏览器的版本
+        alert(window.navigator.userAgent);
+        if (window.navigator.userAgent.indexOf("MSIE") != -1)
+        {
+            alert("这是IE");
+        }else if (window.navigator.userAgent.indexOf("Chrome") != -1)
+        {
+            alert("这是Chrome");
+        }else if (window.location.userAgent.indexOf("FireFox") != -1)
+        {
+         alert("这是火狐");
+        }
+    </script>
+</head>
+<body>
+<p>-------------------示例4：操作空窗口元素 -------------</p>
+<input type="button" value="打开新窗口" />
+<input type="button" value="操作新窗口" />
+<p>--------------------------13.2.2 关闭窗口----------------------------</p>
+<p>-------------------示例一:关闭页面-------------</p>
+<input id="btn" type="button" value="关闭"/>
+<p>------------ 示例二：同时打开和关闭页面-------------</p>
+<input id="btn01" type="button" value="打开"/>
+<input id="btn02" type="button" value="关闭"/>
+<p>----------------------------------------13.3 对话框--------------------------------</p>
+<p>--------------------------13.3.1 alert()用法----------------------------</p>
+<p>--------------------------13.3.2 confirm()用法----------------------------</p>
+<input type="button" value="回到首页" id="button02">
+<p>--------------------------13.3.3 prompt()用法----------------------------</p>
+<input type="button" value="回到首页" id="button03">
+<p>----------------------------------------13.4定时器--------------------------------</p>
+<p>--------------------------13.4.1 setTimeout()用法----------------------------</p>
+<p>-------------------示例一:定时器来提示-------------</p>
+<p>等待一下（2s）马上到来</p>
+<p>-------------------示例二:setTimeout（code，time）中code是函数-------------</p>
+<p>等待一下（2s）马上到来,这次调用的是函数哦!</p>
+<p>--------------------------13.4.1 clearTimeout()用法----------------------------</p>
+<p>等待一下（2s）马上到来,这次调用的是函数哦!</p>
+<input type="button" value="添加定时器" id="btn03">
+<input type="button" value="去除定时器" id="btn04">
+<p>--------------------------13.4.2 setInterval()和clearInterval（）循环定时器----------------------------</p>
+<p>-------------------示例一:数字定时器-------------</p>
+<p>倒计时<span id="num">5</span></p>
+<p>-------------------示例一:数字定时器-------------</p>
+<input type="button" value="开始定时器" id="btn05">
+<input type="button" value="暂停定时器" id="btn06">
+<div class="div"></div>
+
+
+</body>
+</html>
