@@ -37,18 +37,18 @@ ES2015书籍学习笔记
 	  					 |其执行过程：先寻找let let a = null => console.log(a) => var会显示undefined  
 	  					 |let会显示ReferenceError => a = 3 =>结束运行函数
 	  我们变成这样就行了：
-	  function getMes(){					 |	
-	  let a = 3;							 |
-	  console.log(a);						 |//这样打印的就是a的值了
-	  }										 |其执行过程是：先寻找let let => let a = null => a = 3 => console.log(a) => 3 =>结束运行函数
+	  function getMes(){			 |	
+	  let a = 3;				 |
+	  console.log(a);			 |//这样打印的就是a的值了
+	  }					 |其执行过程是：先寻找let let => let a = null => a = 3 => console.log(a) => 3 =>结束运行函数
 1.5更佳体验
 1.5.1 let的作用就是用来代替var的，以后能不用var尽量不用var ，在ES2015中遵从三条例：
-		1.一般情况下，使用const来定义值的储存容器（即：定义常量用const）;
-		2.只有在容器中明确地确定将会被改变才使用let来定义变量（即：定义变量用let）;
-		3.不再使用var.
+	1.一般情况下，使用const来定义值的储存容器（即：定义常量用const）;
+	2.只有在容器中明确地确定将会被改变才使用let来定义变量（即：定义变量用let）;
+	3.不再使用var.
 1.5.2 let,const和循环语句
-		1.由于在ES2015前没有块级作用域所以得用forEach方法来保证（）中定义的变量能被调用
-		  而现在因为有了块作用域let和const所以不用forEach来保障了；
-		2.当用const来定义数组或者对象为常量时，可以用entries来将每个元素形成新的数组如：
-			const a = ['html', 'javascript'，'CSS'];
-			console.log(a.entris()); // =>显示的值为[[0, 'html'], [1, 'javascript'], [2, 'CSS']]
+	1.由于在ES2015前没有块级作用域所以得用forEach方法来保证（）中定义的变量能被调用
+	  而现在因为有了块作用域let和const所以不用forEach来保障了；
+	2.当用const来定义数组或者对象为常量时，可以用entries来将每个元素形成新的数组如：
+	  const a = ['html', 'javascript'，'CSS'];
+	  console.log(a.entris()); // =>显示的值为[[0, 'html'], [1, 'javascript'], [2, 'CSS']]
