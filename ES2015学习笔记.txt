@@ -32,7 +32,7 @@ ES2015书籍学习笔记
 1.4.4 例子：var a = 1;			       |*在引擎进入作用域时会首先扫描let，const，var定义的变量
 	  function getMes(){                     |并先将变量名定为空，再到赋值才会将值赋给定义的变量
 	  console.log(a); 			 |//最后的结果是：ReferenceError
-	  var a = 3；				|/而在以前ES版本用var来声明会出现undefined即未定义
+	  var a = 3；				 |/而在以前ES版本用var来声明会出现undefined即未定义
 	  }					 |为什么会这样呢就是因为先扫描的是声明变量名
 	  					 |其执行过程：先寻找let let a = null => console.log(a) => var会显示undefined  
 	  					 |let会显示ReferenceError => a = 3 =>结束运行函数
