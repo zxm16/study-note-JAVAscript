@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>验证表单</title>
+    <script defer>
+            let eg = {};
+            eg.$ = (id) => document.getElementById(id);
+            eg.regCheck = () => {
+                let usid = eg.$("userid");
+                let uspd = eg.$("userPassword");
+                let uspd2 = eg.$("userPassword2");
+                if (usid.value === "")
+                {
+                    alert("用户名不能为空");
+                    return false;
+                }
+                if (uspd.value === "")
+                {
+                    alert("用户名不能为空");
+                    return false;
+                }
+                if (uspd2.value === ""){
+                    alert("请再次输入密码来验证密码");
+                    return false;
+                }
+                if (uspd2.value !== uspd.value){
+                    alert("两次输入的密码不相同");
+                    return false;
+                }
+                return true;
+            }
+    </script>
+</head>
+<body>
+    <form>
+       输入用户id:<input type="text" name="" id="userid"></br>
+        输入密码:<input type="text" name="" id="userPassword"></br>
+        确定密码:<input type="text" name="" id="userPassword2"></br>
+        <input type="submit" value="提交" id="submit" onclick="return eg.regCheck()">
+    </form>
+</body>
+</html>
